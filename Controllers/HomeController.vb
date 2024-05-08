@@ -25,11 +25,12 @@ Public Class HomeController
 
     Function UploadFile(FileUpload1 As FileUpload, GridView1 As GridView) As ActionResult
         ViewData("Message") = "Upload File page."
-        Dim csvPath As String = Server.MapPath("~/csvFile/File.csv") + Path.GetFileName(FileUpload1.PostedFile.FileName)
+        Dim newFile As WeatherDetails = New WeatherDetails()
+        Dim csvPath As String = Server.MapPath("~/csvFile/") + Path.GetFileName(FileUpload1.PostedFile.FileName)
         FileUpload1.SaveAs(csvPath)
 
         Dim dt As New DataTable()
-        dt.Columns.AddRange(New DataColumn(2) {New DataColumn("Lat", GetType(Decimal)), New DataColumn("Long", GetType(Decimal)), New DataColumn("Location Name", GetType(String))})
+        dt.Columns.AddRange(New DataColumn(2) {New DataColumn(newFile.Lat, GetType(Decimal)), New DataColumn(newFile.Longitude, GetType(Decimal)), New DataColumn(newFile.locatioName, GetType(String))})
 
         Dim csvData As String = System.IO.File.ReadAllText(csvPath)
 
@@ -51,6 +52,5 @@ Public Class HomeController
         GridView1.DataBind()
         Return View()
     End Function
-
 
 End Class
