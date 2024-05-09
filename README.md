@@ -2,7 +2,9 @@
 
 Created a class in Weather Details with properties of latitude, longitude and location Name 
 
-Upload a file and save a CSV file 
+Make an api call and retrieve data in JSON format
+
+If there is data coming out then allow user to upload a CSV file and save it 
 
 Use DataTable to create a table and show details of the latitude, longitude and Location Name
 
